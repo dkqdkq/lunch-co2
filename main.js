@@ -1,18 +1,15 @@
-const express = require('express');
-const axios = require('axios');
-
+const express = require("express");
+const axios = require("axios");
 
 const app = express();
-app.use(express.static('public'));
+app.use(express.static("public"));
 app.use(express.json());
 
-
-app.get('/', async (req, res) => {
-    res.sendFile(__dirname + '/public/index.html');
+app.get("/", async (req, res) => {
+    res.sendFile(__dirname + "/public/index.html");
 });
 
-
-app.get('/api', async (req, res) => {
+app.get("/api", async (req, res) => {
     const query = req.query;
     const YYYYMMDD = 20231010;
     const SchoolCode = 7010144;
@@ -22,7 +19,7 @@ app.get('/api', async (req, res) => {
     const carbon = data.data?.mealServiceDietInfo?.[1]?.row?.[0].ORPLC_INFO;
     const calories = data.data?.mealServiceDietInfo?.[1]?.row?.[0].CAL_INFO;
     if (!meal) {
-        res.status(404).json({ message: 'Not Found' });
+        res.status(404).json({ message: "Not Found" });
     }
     res.status(200).json({ meal: meal, carbon: carbon, calories: calories });
 });
