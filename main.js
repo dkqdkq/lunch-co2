@@ -1,5 +1,6 @@
 const express = require("express");
 const axios = require("axios");
+const cheerio = require("cheerio");
 
 const app = express();
 app.use(express.static("public"));
@@ -38,11 +39,12 @@ app.get("/menu", async (req, res) => {
         `https://yangcheon.sen.hs.kr/dggb/module/mlsv/selectMlsvDetailPopup.do?mlsvId=${mlsvId}`,
         { headers }
     );
-    //const menu = data.data?.html[1].bod(
     if (!data) {
         res.status(404).json({ message: "Not Found" });
     }
-    res.send(data.data); // fixed
+    const $ = cheerio.load(data.data);
+    const menu = $("#detailFrm > table > tbody > tr:nth-child(4) > td").text();
+    res.send(menu); // fixed
 });
 
 app.listen(30000, () => {
