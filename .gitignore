@@ -131,3 +131,4 @@ dist
 
 test/
 package-lock.json
+.idea/
