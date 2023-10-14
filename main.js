@@ -31,7 +31,7 @@ app.get("/api/menu", async (req, res) => {
     const query = req.query;
     const headers = {
         "User-Agent":
-            "Mozilla/5.0 (Macintosh; Intel Mac OS X 12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36",
+            "Mozilla/5.0",
     };
     const YYYYMMDD = 0;
     const mlsvId = 2376928;
