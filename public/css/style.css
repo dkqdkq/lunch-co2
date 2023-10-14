@@ -38,6 +38,25 @@ header {
 main {
     flex: 12;
     display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+main > div {
+    height: 100%;
+}
+
+div.meal {
+    flex: 5;
+}
+
+div.kcal {
+    flex: 2;
+}
+
+div.allergy {
+    flex: 3;
 }
 
 footer {

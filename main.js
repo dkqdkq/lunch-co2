@@ -34,7 +34,7 @@ app.get("/api/menu", async (req, res) => {
             "Mozilla/5.0",
     };
     const YYYYMMDD = 0;
-    const mlsvId = 2376928;
+    const mlsvId = 2376932;
     const data = await axios.get(
         `https://yangcheon.sen.hs.kr/dggb/module/mlsv/selectMlsvDetailPopup.do?mlsvId=${mlsvId}`,
         { headers }
