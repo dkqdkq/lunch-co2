@@ -7,7 +7,9 @@ app.use(express.static("public"));
 app.use(express.json());
 
 app.get("/", async (req, res) => {
-    res.sendFile(__dirname + "/public/index.html");
+    const menu = await fetch("/api/menu").then((res) => res.json());
+    //res.sendFile(__dirname + "/public/index.html");
+    res.render("/public/index.html", { menu });
 });
 
 app.get("/api", async (req, res) => {
@@ -18,20 +20,26 @@ app.get("/api", async (req, res) => {
     const data = await axios.get(
         `https://open.neis.go.kr/hub/mealServiceDietInfo?ATPT_OFCDC_SC_CODE=B10&SD_SCHUL_CODE=${SchoolCode}&Type=json&MLSV_YMD=${YYYYMMDD}`
     );
-    //const meal = data.data?.mealServiceDietInfo?.[1]?.row?.[0].DDISH_NM;
+    const meal = data.data?.mealServiceDietInfo?.[1]?.row?.[0].DDISH_NM;
     const carbon = data.data?.mealServiceDietInfo?.[1]?.row?.[0].ORPLC_INFO;
     const calories = data.data?.mealServiceDietInfo?.[1]?.row?.[0].CAL_INFO;
     /* if (!carbon) {
         res.status(404).json({ message: "Not Found" });
     }*/
-    res.status(200).json({ /*meal: meal,*/ carbon: carbon, calories: calories });
+    res.status(200).json({
+        success: true,
+        data: {
+            meal: meal,
+            carbon: carbon,
+            calories: calories,
+        },
+    });
 });
 
 app.get("/api/menu", async (req, res) => {
     const query = req.query;
     const headers = {
-        "User-Agent":
-            "Mozilla/5.0",
+        "User-Agent": "Mozilla/5.0",
     };
     const YYYYMMDD = 0;
     const mlsvId = 2376932;
@@ -44,7 +52,11 @@ app.get("/api/menu", async (req, res) => {
     }
     const $ = cheerio.load(data.data);
     const menu = $("#detailFrm > table > tbody > tr:nth-child(4) > td").text();
-    res.send(menu); // fixed
+    /*res.status(200).json({
+        success: true,
+        data: menu.trim().split(","),
+    });*/
+    res.json(menu);
 });
 
 app.listen(30000, () => {

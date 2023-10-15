@@ -6,7 +6,7 @@
             content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
         />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        <meta http-equiv="refresh" content="5" />
+        <!-- meta http-equiv="refresh" content="5" /> -->
         <title>양천고 급식</title>
 
         <link rel="stylesheet" href="css/style.css" />
@@ -24,7 +24,13 @@
                 </div>
             </header>
             <main>
-                <div class="meal"></div>
+                <div class="meal">
+                    <div class="meal-item">
+                        <div class="meal-name">
+                            <p>{{ menu }}</p>
+                        </div>
+                    </div>
+                </div>
                 <div class="kcal"></div>
                 <div class="allergy"></div>
             </main>
@@ -32,6 +38,6 @@
                 <p class="copyright">&copy; 2023 양천고등학교 dkq, helgisnw</p>
             </footer>
         </div>
-        <script></script>
+        <script src="js/index.js"></script>
     </body>
 </html>

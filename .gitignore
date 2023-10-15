@@ -132,3 +132,4 @@ dist
 test/
 package-lock.json
 .idea/
+*.csv
