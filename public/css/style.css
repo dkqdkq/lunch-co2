@@ -16,6 +16,7 @@ body {
     margin: 0;
     padding: 0;
     width: 100%;
+    overflow-y: scroll;
 }
 
 h1,
@@ -47,6 +48,11 @@ header {
     justify-content: center;
 }
 
+div.co2 > p {
+    font-size: 3rem;
+    font-weight: 700;
+}
+
 main {
     flex: 12;
     width: 100%;
@@ -54,6 +60,10 @@ main {
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    box-sizing: border-box;
+    border-top: 1px solid #000000;
+
+    overflow-y: scroll;
 }
 
 main > div {
@@ -62,8 +72,32 @@ main > div {
 
 div.meal {
     flex: 5;
-    background-color: red;
+    display: flex;
+    flex-direction: column;
+}
+
+div.meal-title {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5em;
+    font-weight: 700;
+    box-sizing: border-box;
+    border-bottom: 1px solid #000000;
+}
+
+div.meal-list {
+    flex: 9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
     overflow-y: scroll;
+    padding: 0 20px;
+
+    padding-top: 10px;
 }
 
 div.meal-item {
@@ -73,17 +107,76 @@ div.meal-item {
     box-sizing: border-box;
     display: flex;
     align-items: center;
-}
-
-div.meal-name {
+    justify-content: center;
+    font-size: 1.2em;
 }
 
 div.kcal {
     flex: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+div.kcal-title {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5em;
+    font-weight: 700;
+    box-sizing: border-box;
+    border-bottom: 1px solid #000000;
+}
+
+div.kcal-data {
+    flex: 9;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 10px;
 }
 
 div.allergy {
     flex: 3;
+    display: flex;
+    flex-direction: column;
+}
+
+div.allergy-title {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5em;
+    font-weight: 700;
+    box-sizing: border-box;
+    border-bottom: 1px solid #000000;
+}
+
+div.allergy-list {
+    flex: 9;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 10px;
+    overflow-y: scroll;
+}
+
+div.allergy-item {
+    width: 100%;
+    padding: 3px 20px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 footer {
